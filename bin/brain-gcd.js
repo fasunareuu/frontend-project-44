@@ -2,10 +2,8 @@
 /* eslint-disable no-unused-vars */
 import readlineSync from 'readline-sync';
 import { name, getName } from '../src/cli.js';
-
-console.log('Welcome to the Brain Games!');
+import { welcome, congratulation } from '../src/callbacks.js';
 // eslint-disable-next-line no-undef
-getName();
 
 function NOD(value1, value2) {
   if (value2 > value1) {
@@ -18,6 +16,7 @@ function NOD(value1, value2) {
 }
 
 export default function nod() {
+  welcome();
   console.log('Find the greatest common divisor of given numbers.');
   let count = 0;
   for (let i = 0; i < 3; i += 1) {
@@ -32,12 +31,12 @@ export default function nod() {
       count += 1;
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${NOD(value1, value2)}'.
-      Let's try again, ${name}`);
+      Let's try again, ${name}!`);
       break;
     }
   }
   if (count === 3) {
-    console.log(`Congratulations, ${name}`);
+    congratulation();
   }
 }
 nod();
